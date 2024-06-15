@@ -8,10 +8,11 @@
         #sitio{
             padding : 5rem;
             font-size: 5rem;
-            margin-left: 15rem;
+            margin-left: 20rem;
+            border: black 5px solid;
         }
         .rgb{
-            font-size: 2px;
+            font-size: 20px;
         }
     </style>
 </head>
@@ -19,10 +20,12 @@
     <input onChange="update(this.jscolor, '#pr3')" onInput="update(this.jscolor, '#pr4')" value="FFFFFF" data-jscolor="{alpha:1}">
     <div id="sitio">
         Mi Red Neuronal
-        <p id="textR" class="rgb">Neurona Red: 1</p>
-        <p id="textG" class="rgb">Neurona Green: 1</p>
-        <p id="textB" class="rgb">Neurona Blue: 1</p>
+        <p id="textR" class="rgb">Neurona 1: 1</p>
+        <p id="textG" class="rgb">Neurona 2: 1</p>
+        <p id="textB" class="rgb">Neurona 3: 1</p>
         <p id="neurona" class="rgb">Calculos: 0</p>
+        <p id="texto" class="rgb">Color del texto: Negro</p>
+        <p id="hex" class="rgb">Color Hex: #FFFFFF</p>
     </div>
     <script src="jscolor.js"></script>
     <script>
@@ -31,6 +34,8 @@
        
        function update(color) {
         div.style.backgroundColor = color;
+        var hex = document.getElementById("hex");
+        hex.innerText = 'Color Hex: ' + color;
 
 
     var rojoNeurona = color.channels.r / 255;
@@ -44,27 +49,31 @@ function brain(color1, color2, color3) {
     var Rojo = color1;
     var Verde = color2;
     var Azul = color3;
-
     var parrafoRojo = document.getElementById("textR");
     var parrafoVerde = document.getElementById("textG");
     var parrafoAzul = document.getElementById("textB");
-    parrafoRojo.innerText = 'Neurona Red: ' + Rojo;
-    parrafoVerde.innerText = 'Neurona Green: ' + Verde;
-    parrafoAzul.innerText = 'Neurona Blue: ' + Azul;
+    var parrafo = document.getElementById("neurona");
+    var texto = document.getElementById("texto");
+
+
+    parrafoRojo.innerText = 'Neurona 1: ' + Rojo;
+    parrafoVerde.innerText = 'Neurona 2: ' + Verde;
+    parrafoAzul.innerText = 'Neurona 3: ' + Azul;
 
     Verde=Verde*2;
 
     var Salida = Rojo + Verde + Azul;
     Salida = Salida/4;
 
-    var parrafo = document.getElementById("neurona");
     parrafo.innerText = 'Calculos: ' + Salida;
 
     if(Salida<0.4){
         document.body.style.color = "white";
+        texto.innerText = 'Color del texto: Blanco'
     }
     else{
         document.body.style.color = "black";
+        texto.innerText = 'Color del texto: Negro'
     }
 }
 
