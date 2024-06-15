@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Neuronal</title>
+    <style>
+        #sitio{
+            padding : 5rem;
+            font-size: 5rem;
+            margin-left: 15rem;
+        }
+        .rgb{
+            font-size: 2px;
+        }
+    </style>
+</head>
+<body>
+    <input onChange="update(this.jscolor, '#pr3')" onInput="update(this.jscolor, '#pr4')" value="CCFFAA" data-jscolor="{alpha:0.7}">
+    <div id="sitio">
+        Mi Red Neuronal
+        <p id="textR" class="rgb">Rojo</p>
+        <p id="textG" class="rgb">Verde</p>
+        <p id="textB" class="rgb">Azul</p>
+    </div>
+    <script src="jscolor.js"></script>
+    <script>
+        function update(color){
+            var div = document.getElementById("sitio");
+            div.style.backgroundColor = color;
+
+            var parrafo = document.getElementById("textR");
+            parrafo.innerText = 'Red: '+color.channels.r;
+            var parrafo = document.getElementById("textG");
+            parrafo.innerText = 'Green: '+color.channels.g;
+            var parrafo = document.getElementById("textB");
+            parrafo.innerText = 'Blue: '+color.channels.b;
+        }
+    </script>
+</body>
+</html>
